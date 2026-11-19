@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Poster Lab — GTA-style cover maker</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-sun" aria-hidden="true"></span>
+    <div>
+      <h1>Leonida Poster Lab</h1>
+      <p>Turn any photo into a GTA-style cover. Photos never leave your machine.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="shuffleBtn" type="button" title="Random samples, layout and grade">Surprise me</button>
+    <button id="exportBtn" type="button" class="primary">Export PNG</button>
+  </div>
+</header>
+
+<main>
+  <aside class="controls" aria-label="Cover controls">
+    <section class="card">
+      <h2>1 · Layout</h2>
+      <div class="btn-row" id="layoutBtns">
+        <button type="button" data-layout="quad" class="active">Quad Grid</button>
+        <button type="button" data-layout="duo">Duo Split</button>
+        <button type="button" data-layout="triple">Triple Strip</button>
+        <button type="button" data-layout="hero">Hero Solo</button>
+      </div>
+      <p class="hint">Four panels, two panels, three strips, or one big photo.</p>
+    </section>
+
+    <section class="card">
+      <h2>2 · Colour grade</h2>
+      <div class="btn-row" id="gradeBtns">
+        <button type="button" data-grade="sunset" class="active">Vice Sunset</button>
+        <button type="button" data-grade="neon">Neon Nights</button>
+        <button type="button" data-grade="noir">Palm Noir</button>
+        <button type="button" data-grade="golden">Golden Hour</button>
+      </div>
+      <p class="hint">A warm sunset wash, a neon duotone, a black-and-white with a pink punch, or late gold.</p>
+    </section>
+
+    <section class="card">
+      <h2>3 · Caption</h2>
+      <label class="field">Title
+        <input id="titleInput" type="text" value="SUNSET HEIST" maxlength="24" autocomplete="off">
+      </label>
+      <label class="field">Subtitle
+        <input id="subtitleInput" type="text" value="LEONIDA · SUMMER 2026" maxlength="40" autocomplete="off">
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>4 · Panels</h2>
+      <p class="hint">Click a panel in the preview to select it, then drag it to move the photo and scroll to zoom. Or drop your own image files onto the preview.</p>
+      <div id="panelList"></div>
+      <div class="btn-row">
+        <button id="fillAllBtn" type="button">Fill all panels with the selected photo</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5 · Export size</h2>
+      <div class="btn-row" id="sizeBtns">
+        <button type="button" data-size="square" class="active">Square · 1080 × 1080</button>
+        <button type="button" data-size="portrait">Portrait · 1080 × 1350</button>
+        <button type="button" data-size="wide">Wide · 1920 × 1080</button>
+      </div>
+      <p class="hint">One click, one PNG, ready to post.</p>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Live preview">
+    <div class="canvas-wrap">
+      <canvas id="previewCanvas" width="1080" height="1080"></canvas>
+      <div id="dropHint" hidden>Drop photos here</div>
+    </div>
+    <p id="statusLine" role="status">Loading sample photos…</p>
+  </section>
+</main>
+
+<footer>
+  <p>Leonida Poster Lab — an original cover maker. No Rockstar Games logo, artwork or fonts; lettering uses Anton and Bebas Neue under the SIL Open Font License. Sample pictures are illustrations drawn for this app.</p>
+</footer>
+
+<input id="fileInput" type="file" accept="image/*" multiple hidden>
+<script src="cover.js"></script>
+</body>
+</html>
